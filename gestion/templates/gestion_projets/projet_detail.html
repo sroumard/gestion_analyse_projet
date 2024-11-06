@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du projet</title>
+</head>
+<body>
+    <h1>Détails du projet : {{ projet.nom }}</h1>
+
+    <div>
+        <h2>Description</h2>
+        <p>{{ projet.description }}</p>
+    </div>
+
+    <div>
+        <h2>Tâches associées</h2>
+        <ul>
+            {% for tache in taches %}
+                <li>{{ tache.titre }} - {{ tache.statut }} - {{ tache.date_echeance }}</li>
+            {% empty %}
+                <li>Aucune tâche pour ce projet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <a href="{% url 'task_form' projet.id %}">Ajouter une nouvelle tâche</a>
+    </div>
+
+    <a href="{% url 'projet_list' %}">Retour à la liste des projets</a>
+</body>
+</html>

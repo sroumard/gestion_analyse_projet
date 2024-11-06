@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des projets</title>
+</head>
+<body>
+    <h1>Liste des projets</h1>
+
+    <div>
+        <a href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+    </div>
+
+    <ul>
+        {% for projet in projets %}
+            <li>
+                <a href="{% url 'projet_detail' projet.id %}">{{ projet.nom }}</a> - {{ projet.statut }}
+            </li>
+        {% empty %}
+            <li>Aucun projet trouvé.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
