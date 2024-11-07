@@ -1,31 +1,21 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Mon Site{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <title>{% block title %}Gestion des Projets{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/projets">Projets</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    {% block content %}
-    <!-- Le contenu spécifique à chaque page sera inséré ici -->
-    {% endblock %}
-  </main>
-
-  <footer>
-    <p>&copy; 2024 Mon Site</p>
-  </footer>
+    <header>
+        <h1>Gestion des Projets</h1>
+        <nav>
+            <a href="{% url 'projet_list' %}">Tous les Projets</a>
+            <a href="{% url 'projet_create' %}">Nouveau Projet</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>

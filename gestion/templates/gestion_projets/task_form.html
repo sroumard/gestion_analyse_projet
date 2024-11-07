@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire de tâche</title>
-</head>
-<body>
-    <h1>Ajouter/Modifier une tâche</h1>
+< ! --Le fichier base.html sert de modèle de base pour la mise en page de votre site. Tous les autres templates l'extendront pour éviter la répétition de code. -- >
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+{% extends "gestion_projets/base.html" %}
 
-        <button type="submit">Enregistrer</button>
-    </form>
+{% block title %}Formulaire de Tâche{% endblock %}
 
-    <a href="{% url 'projet_detail' projet.id %}">Retour aux détails du projet</a>
-</body>
-</html>
+{% block content %}
+<h2>{% if form.instance.id %}Modifier{% else %}Créer{% endif %} une Tâche</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'projet_list' %}">Annuler</a>
+{% endblock %}

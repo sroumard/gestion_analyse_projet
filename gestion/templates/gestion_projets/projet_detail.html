@@ -1,33 +1,23 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du projet</title>
-</head>
-<body>
-    <h1>Détails du projet : {{ projet.nom }}</h1>
+{% extends "gestion_projets/base.html" %}
 
-    <div>
-        <h2>Description</h2>
-        <p>{{ projet.description }}</p>
-    </div>
+{% block title %}Détails du Projet{% endblock %}
 
-    <div>
-        <h2>Tâches associées</h2>
-        <ul>
-            {% for tache in taches %}
-                <li>{{ tache.titre }} - {{ tache.statut }} - {{ tache.date_echeance }}</li>
-            {% empty %}
-                <li>Aucune tâche pour ce projet.</li>
-            {% endfor %}
-        </ul>
-    </div>
+{% block content %}
+<h2>{{ projet.nom }}</h2>
+<p>{{ projet.description }}</p>
+<p>Date de début : {{ projet.date_debut }}</p>
+<p>Date de fin : {{ projet.date_fin|default:"Non spécifiée" }}</p>
+<p>Statut : {{ projet.statut }}</p>
 
-    <div>
-        <a href="{% url 'task_form' projet.id %}">Ajouter une nouvelle tâche</a>
-    </div>
+<h3>Tâches</h3>
+<ul>
+    {% for tache in taches %}
+        <li>{{ tache.titre }} - {{ tache.statut }}</li>
+    {% empty %}
+        <li>Aucune tâche pour ce projet.</li>
+    {% endfor %}
+</ul>
 
-    <a href="{% url 'projet_list' %}">Retour à la liste des projets</a>
-</body>
-</html>
+<a href="{% url 'tache_create' projet.id %}">Ajouter une tâche</a>
+<a href="{% url 'projet_edit' projet.id %}">Modifier le projet</a>
+{% endblock %}

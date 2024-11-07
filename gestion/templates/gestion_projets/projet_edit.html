@@ -1,11 +1,13 @@
-<!-- gestion_projets/projet_edit.html -->
-{% extends 'gestion_projets/base.html' %}
+{% extends "gestion_projets/base.html" %}
+
+{% block title %}Modifier le Projet{% endblock %}
 
 {% block content %}
-  <h2>Modifier le projet : {{ form.instance.nom }}</h2>
-  <form method="post">
+<h2>Modifier le Projet</h2>
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Mettre à jour le projet</button>
-  </form>
+    <button type="submit">Enregistrer les modifications</button>
+</form>
+<a href="{% url 'projet_detail' projet.id %}">Annuler</a>
 {% endblock %}

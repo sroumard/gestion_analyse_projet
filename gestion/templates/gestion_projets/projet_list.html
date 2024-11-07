@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des projets</title>
-</head>
-<body>
-    <h1>Liste des projets</h1>
+<! -- Affiche la liste de tous les projets avec des liens vers leurs détails -->
 
- 
 
-    <ul>
-        {% for projet in projets %}
-            <li>
-                <a href="{% url 'projet_detail' projet.id %}">{{ projet.nom }}</a> - {{ projet.statut }}
-            </li>
-        {% empty %}
-            <li>Aucun projet trouvé.</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'projet_create' %}">Créer un nouveau projet</a>
-</body>
-</html>
+{% extends "gestion_projets/base.html" %}
+
+{% block title %}Liste des Projets{% endblock %}
+
+{% block content %}
+<h2>Liste des Projets</h2>
+<ul>
+    {% for projet in projets %}
+        <li>
+            <a href="{% url 'projet_detail' projet.id %}">{{ projet.nom }}</a> - {{ projet.statut }}
+        </li>
+    {% empty %}
+        <li>Aucun projet trouvé.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
