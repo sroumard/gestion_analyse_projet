@@ -1,0 +1,11 @@
+<!-- gestion_projets/tache_create.html -->
+{% extends 'gestion_projets/base.html' %}
+
+{% block content %}
+  <h2>Ajouter une tâche pour le projet : {{ projet.nom }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Ajouter la tâche</button>
+  </form>
+{% endblock %}

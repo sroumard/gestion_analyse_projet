@@ -8,9 +8,7 @@
 <body>
     <h1>Liste des projets</h1>
 
-    <div>
-        <a href="{% url 'dashboard' %}">Retour au tableau de bord</a>
-    </div>
+ 
 
     <ul>
         {% for projet in projets %}
@@ -21,5 +19,6 @@
             <li>Aucun projet trouvé.</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'projet_create' %}">Créer un nouveau projet</a>
 </body>
 </html>

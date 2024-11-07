@@ -1,0 +1,11 @@
+<!-- gestion_projets/projet_create.html -->
+{% extends 'gestion_projets/base.html' %}
+
+{% block content %}
+  <h2>Créer un nouveau projet</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Créer le projet</button>
+  </form>
+{% endblock %}

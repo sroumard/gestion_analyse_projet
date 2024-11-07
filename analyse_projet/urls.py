@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('gestion/', include('gestion.urls')),  # Inclure les URLs de l'application gestion
 
+
 ]
