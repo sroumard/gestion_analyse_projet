@@ -9,5 +9,7 @@
     {{ form.as_p }}
     <button type="submit">Enregistrer les modifications</button>
 </form>
-<a href="{% url 'projet_detail' projet.id %}">Annuler</a>
+<p>ID du projet : {{ projet.id }}</p>
+
+<a href="{% url 'projet_list'%}">Annuler</a>
 {% endblock %}

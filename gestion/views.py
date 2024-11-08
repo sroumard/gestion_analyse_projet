@@ -36,7 +36,14 @@ def projet_edit(request, projet_id):
         form = ProjetForm(request.POST, instance=projet)
         if form.is_valid():
             form.save()
-            return redirect('projet_list')  # Redirection vers la liste des projets
+            print(f"Projet ID: {projet.id}")  # Debugging line
+
+           # return redirect('projet_list')  # Redirection vers la liste des projets
+           # return redirect('projet_detail', projet_id=projet.id)
+            return render(request, 'gestion_projets/projet_edit.html', {'projet': projet})
+
+        
+
     else:
         form = ProjetForm(instance=projet)
     return render(request, 'gestion_projets/projet_edit.html', {'form': form})
