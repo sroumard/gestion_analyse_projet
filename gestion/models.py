@@ -23,3 +23,15 @@ class Tache(models.Model):
 
     def __str__(self):
         return self.titre
+    
+
+
+class KPI(models.Model):
+    projet = models.ForeignKey(Projet, on_delete=models.CASCADE, related_name="kpis")
+    nom = models.CharField(max_length=200)
+    valeur = models.FloatField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nom} - {self.valeur} ({self.date})"
+

@@ -1,7 +1,9 @@
 
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProjetForm,TacheForm
-from .models import Projet
+from rest_framework import generics
+from .models import Projet, KPI, Tache
+from .serializers import ProjetSerializer, KPISerializer, TacheSerializer
 
 
 # gestion_projets/views.py
@@ -66,3 +68,14 @@ def tache_create(request, projet_id):
 
 
 
+class ProjetListCreateView(generics.ListCreateAPIView):
+    queryset = Projet.objects.all()
+    serializer_class = ProjetSerializer
+
+class TacheListCreateView(generics.ListCreateAPIView):
+    queryset = Tache.objects.all()
+    serializer_class = TacheSerializer
+
+class KPIListCreateView(generics.ListCreateAPIView):
+    queryset = KPI.objects.all()
+    serializer_class = KPISerializer
