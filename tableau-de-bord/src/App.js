@@ -30,3 +30,14 @@ function App() {
 }
 
 export default App;
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+
+// Enregistrer les échelles et autres éléments nécessaires
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);

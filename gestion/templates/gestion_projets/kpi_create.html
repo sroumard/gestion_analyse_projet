@@ -1,0 +1,16 @@
+<!-- gestion_projets/kpi_create.html -->
+{% extends 'gestion_projets/base.html' %}
+
+{% block title %}Ajouter un KPI - {{ projet.nom }}{% endblock %}
+
+{% block content %}
+<h1>Ajouter un KPI pour le projet "{{ projet.nom }}"</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+</form>
+
+<a href="{% url 'kpi_list' projet_id=projet.id %}">Retour à la liste des KPIs</a>
+{% endblock %}

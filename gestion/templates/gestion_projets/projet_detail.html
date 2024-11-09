@@ -20,4 +20,20 @@
 
 <a href="{% url 'tache_create' projet.id %}">Ajouter une tâche</a>
 <a href="{% url 'projet_edit' projet.id %}">Modifier le projet</a>
+
+<!-- Affichage des KPIs -->
+<h3>KPIs du Projet</h3>
+<ul>
+    {% for kpi in projet.kpis.all %}
+        <li>
+            <strong>{{ kpi.nom }} :</strong> {{ kpi.valeur }} ({{ kpi.date }})
+            
+        </li>
+    {% empty %}
+        <li>Aucun KPI pour ce projet.</li>
+    {% endfor %}
+</ul>
+
+<!-- Ajouter un KPI -->
+<a href="{% url 'kpi_create' projet.id %}">Ajouter un KPI</a>
 {% endblock %}

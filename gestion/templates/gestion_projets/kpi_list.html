@@ -1,0 +1,18 @@
+<!-- gestion_projets/kpi_list.html -->
+{% extends 'gestion_projets/base.html' %}
+
+{% block title %}Liste des KPIs - {{ projet.nom }}{% endblock %}
+
+{% block content %}
+<h1>Liste des KPIs pour le projet "{{ projet.nom }}"</h1>
+
+<ul>
+    {% for kpi in kpis %}
+        <li>{{ kpi.nom }} : {{ kpi.valeur }} ({{ kpi.date }})</li>
+    {% empty %}
+        <li>Aucun KPI disponible.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'kpi_create' projet_id=projet.id %}">Ajouter un KPI</a>
+{% endblock %}
